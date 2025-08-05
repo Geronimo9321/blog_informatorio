@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block contenido_cuerpo %}
+	 
+    <h1>NOTICIAS DEL GÉNERO: {{ genero.nombre }}</h1>
+
+    {% if noticias %}
+        {% for noticia in noticias %}
+            <div>
+                {% if noticia.imagen %}
+                    <img src="{{ noticia.imagen.url }}" width="300" height="300" alt="Imagen de {{noticia.nombre}}">
+                {% endif %}
+
+                <h2>{{ noticia.nombre }}</h2>
+                <p><strong>GÉNERO: </strong>{{ noticia.genero.nombre }}</p>
+                <p><strong>Fecha de Publicación: </strong>{{ noticia.creado|date:"d/m/Y H:i" }}</p>
+
+                <p>
+                    <a href="{% url 'noticias:detalle_noticias' noticia.pk %}">Ver noticia</a>
+                    <a href="{% url 'noticias:modificar_noticias' noticia.pk %}">Modificar</a>
+                    <a href="{% url 'noticias:borrar_noticias' noticia.pk %}">Eliminar</a>
+                </p>
+            </div>
+
+{% endblock contenido_cuerpo %}

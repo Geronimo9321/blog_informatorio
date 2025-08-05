@@ -5,35 +5,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>BLOG INFORMATORIO</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
 	<div class="header">
 		<img src="{% static 'img/logo.jpg' %}">
-		<div>
-			<ul class="ul-menu">
-				<li><a href="{% url 'path_home' %}">Home</a></li>
-				<li><a href="{% url 'noticias:path_listar_noticias' %}">Noticias</a></li>
-				<li><a href="{% url 'genericos:path_listar_rubros' %}">Rubros</a></li>
-				<li><a href="{% url 'productos:path_listar_productos' %}">Contacto</a></li>
-				<li><a href="{% url 'productos:path_listar_productos' %}">Sobre nosotros</a></li>
-
-				{% if user.is_authenticated %}
-					<span>HOLA {{user.username}}</span>
-					<li>
-						<form method="POST" action="{% url 'usuarios:path_logout' %}">{% csrf_token %}
-						<button type="submit">Cerrar Sesion</button>
-						</form>
-					</li>
-				{% else %}
-					<li><a href="{% url 'usuarios:path_login' %}">Login</a></li>
-					<li><a href="{% url 'usuarios:path_registro' %}">Registro</a></li>
-				{% endif %}
-				
-			</ul>
-		</div>
-	</div>
-	<div class = "cuerpo">
+		<h1>Hola Gero</h1>
+		
 		
 		{% block contenido_cuerpo %}
 

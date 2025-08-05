@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block contenido_cuerpo %}
+	
+    <h1>GÉNEROS DE LAS NOTICIAS</h1>
+
+    <div>
+        {% for genero in generos %}
+            <div>
+                <p><strong>{{ genero.nombre }}</strong></p>
+
+                <a href="">
+                    {% if genero.imagen %}
+                        <img src="{{ genero.imagen.url }}" width="300" height="300" alt="Imagen de {{genero.nombre}}">
+                    {% else %}
+                        <p>[Imagen no disponible.]</p>
+                    {% endif %}
+                </a>
+                <div>
+                    {% empty %}
+                    <p>Género no disponible.</p>
+                </div>
+                    {% endfor %}
+            </div>
+    </div>
+
+{% endblock contenido_cuerpo %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block contenido_cuerpo %}
+    <p>
+        <h1>
+            ESTAS LEYENDO {{noticia.nombre}}
+        </h1>
+        <div>
+           {% if noticia.imagen %}
+            <img src="{{ noticia.imagen.url }}" width="300" height="300" alt="Imagen de la noticia">
+           {% else %}
+            <p>Imagen no disponible.</p>
+           {% endif %}
+           
+           <p><strong>Título: </strong>{{ noticia.nombre }}</p>
+           <p><strong>Género: </strong>{{ noticia.genero.nombre }}</p>
+        </div>
+    </p>
+    <div>
+		<h1>COMENTARIOS</h1>
+
+		{% for c in noticia.misComentarios %}
+			<p>{{c.texto}} / {{c.usuario}}
+			 {% if c.usuario == user or user.is_staff %}
+			  <a href="{% url 'comentarios:path_eliminar_comentario' c.pk %} ">Eliminar</a>
+			 {% endif %}
+			</p>
+		{% endfor %}
+
+		{% if user.is_authenticated %}
+		<form method="POST" action = "{% url 'comentarios:path_comentar' noticia.pk %}">{% csrf_token %}
+		<textarea type="text" name="comentario" rows="5" cols ="30"> </textarea>
+		<button type="submit">COMENTAR</button>
+		</form>
+		{% endif %}
+	</div>
+
+{% endblock contenido_cuerpo %}

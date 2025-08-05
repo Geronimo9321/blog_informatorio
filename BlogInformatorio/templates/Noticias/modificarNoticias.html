@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block contenido_cuerpo %}
+	<div>
+		<h1>
+			MODIFICAR LA NOTICIA: {{noticia.nombre}}
+		</h1>
+		<div>
+			<form method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{form.as_p}}
+				<button type="submit">Modificar noticia</button>
+				<a href="{% url 'noticias:listar_noticias' %}">Cancelar</a>
+			</form>
+		</div>
+	</div>
+{% endblock contenido_cuerpo %}

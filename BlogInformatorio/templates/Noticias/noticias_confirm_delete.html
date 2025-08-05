@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block contenido_cuerpo %}
+	
+    <h1>CONFIRMAR ELIMINACIÓN</h1>
+
+	<form method="post">{% csrf_token %}
+    	<p>¿Estás seguro que desa eliminar la noticia: "<strong>{{ object.nombre }}</strong>"?</p>
+	    
+	    <input type="submit" value="CONFIRMAR">
+	    <a href="{% url 'noticias:listar_noticias' %}"> CANCELAR</a>
+	</form>
+
+{% endblock contenido_cuerpo %}
