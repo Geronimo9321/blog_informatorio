@@ -1,21 +1,126 @@
 {% load static %}
-<!DOCTYPE html>
-<html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>BLOG INFORMATORIO</title>
+    <title>{% block title %}BLOG INFORMATORIO{% endblock %}</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+    <script type="text/javascript" src="{% static 'js/mootools-release-1.11.js' %}"></script>
+    <script src="{% static 'js/dropDownMenu.js' %}" type="text/javascript"></script>
+    <!--[if IE 7]>
+    <style>#dropdownMenu li ul ul {margin-left: 100px;}</style><![endif]-->
 </head>
 <body>
-	<div class="header">
-		<img src="{% static 'img/logo.jpg' %}">
-		<h1>Hola Gero</h1>
-		
-		
-		{% block contenido_cuerpo %}
+<div id="container">
+  <div id="wrapper">
+    <!-- Topbar -->
+    <div id="top">
+      <div class="logo"><a href="{% static 'img/logo.jpeg/' %}"><span>EL BLOG DEL INFORMATORIO</span></a></div>
+      <ul class="login">
+        <li class="left">&nbsp;</li>
+        <li>¡Hello Visitante!</li>
+        <li>|</li>
+        <li><a href="#">Iniciar sesión</a></li>
+        <li>|</li>
+        <li><a href="#">Registrarse</a></li>
+      </ul>
+    </div>
 
-		{% endblock contenido_cuerpo %}
+    <!-- Navigation -->
+    <ul id="nav">
+      <li class="left">&nbsp;</li>
+      <li><a class="active" href="{% url 'path_home' %}">Home</a></li>
+      <li> <a href="#">Sobre el Info<img src="{% static 'images/nav_bullet.jpg' %}" alt="" /></a>
+        <ul>
+          <li><a href="#">Nuestra Institución</a></li>
+          <li><a href="#">Donde estamos</a></li>
+          <li><a href="#">Integrantes</a></li>
+        </ul>
+      </li>
+      <li> <a href="#">Tematicas del Info<img src="{% static 'images/nav_bullet.jpg' %}" alt="" /></a>
+        <ul>
+          <li><a href="#">Etapa 1</a></li>
+          <li><a href="#">Etapa 2</a></li>
+          <li><a href="#">Etapa 3</a></li>
+          <li><a href="#">Eventos &amp; Más</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Para Profes</a></li>
+      <li><a href="#">Para Estudiantes</a></li>
+      <li><a href="#">Contactanos</a></li>
+      <li class="sep">&nbsp;</li>
+      <li class="right">&nbsp;</li>
+    </ul>
 
-	</div>
+    <!-- Header -->
+    <div id="header">
+      {% block header %}
+      <div class="intro">
+        <h2>Ya estoy en</h2>
+        <h1>Your nice and fancy slogan</h1>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <form method="get" id="searchform" action="#">
+          <div>
+            <input class="searchField" type="text" name="q" />
+            <input class="searchSubmit" type="submit" value="" />
+            <input type="hidden" name="sitesearch" value="" />
+          </div>
+        </form>
+      </div>
+      {% endblock %}
+    </div>
+
+    <!-- Main Content -->
+    <div id="content">
+      {% block content %}{% endblock %}
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+      {% block sidebar %}
+      <h2>News &amp; Announcements</h2>
+      <ul id="news">
+        <li>
+          <a href="#"> <img src="{% static 'images/temp/news1.jpg' %}" alt="" width="54" /></a>
+          <h3>News Heading H3</h3>
+          <p>Short news... <a href="#">More &raquo;</a></p>
+        </li>
+        <!-- Más noticias aquí si quieres -->
+      </ul>
+      <h2>Advertising</h2>
+      <p>Put Google Ads Here</p>
+      {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <div id="footer">
+      <div class="foot_l"><a href="#">&nbsp;</a></div>
+      <div class="foot_content">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Parents</a></li>
+          <li><a href="#">Teachers</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+        <p>All contents &copy; YourName. All rights reserved.</p>
+      </div>
+      <div class="foot_r">&nbsp;</div>
+      <div class="backToTop"><a class="backToTop" href="#">&nbsp;</a></div>
+      <div class="foot_info">
+        <p>Valid <a target="_blank" href="http://validator.w3.org/check?uri=referer">XHTML</a> &amp; 
+           <a target="_blank" href="http://jigsaw.w3.org/css-validator">CSS</a>. Template by 
+           <a href="http://web-kreation.com">Web-kreation</a></p>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
+
+{% block contenido_cuerpo %}
+
+{% endblock contenido_cuerpo %}
+

@@ -15,4 +15,6 @@ urlpatterns = [
     #INCLUIR LAS APP
     path('Noticias/', include('noticias.urls')),
     path('Usuarios/', include('usuarios.urls')),
+    path('Generos/', include('generos.urls')),
+    path('Comentarios/', include('comentarios.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

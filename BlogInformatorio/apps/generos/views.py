@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from genericos.models import Genero
+from generos.models import Genero
 
 # Create your views here.
 
