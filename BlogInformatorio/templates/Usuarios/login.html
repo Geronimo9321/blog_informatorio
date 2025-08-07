@@ -1,18 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
-</head>
-<body>
-    <h4>LOGIN</h4>
+{% extends "base.html" %}
 
-    <form method="POST">{% csrf_token %}
-        {{form.errors}}
-        <input type="text" name="username">
-        <input type="password", name="password">
-        <button type="submit">Aceptar</button>
-    </form>
-</body>
-</html>
+{% block content %}
+<h2>Iniciar Sesión</h2>
+
+<form method="POST" novalidate>
+  {% csrf_token %}
+  {{ form.non_field_errors }}
+
+  <label for="id_username">Nombre de usuario</label>
+  {{ form.username.errors }}
+  {{ form.username }}
+
+  <label for="id_password">Contraseña</label>
+  {{ form.password.errors }}
+  {{ form.password }}
+
+  <button type="submit">Ingresar</button>
+</form>
+{% endblock %}
