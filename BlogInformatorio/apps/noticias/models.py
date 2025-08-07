@@ -17,6 +17,8 @@ class Noticia(models.Model):
     
     genero = models.ForeignKey(Genero, null= True, on_delete= models.CASCADE)
 
+    descripcion = models.TextField(null=True, blank=True)
+
     def __str__(self):
         return self.nombre 
     
