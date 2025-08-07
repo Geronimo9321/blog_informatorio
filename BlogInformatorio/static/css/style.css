@@ -153,7 +153,7 @@ img.aligncenter {
 #top {
 	height: 90px;
 	padding: 0 25px;
-  	background: #F4F4EA url(../images/bg.jpg) repeat-x 0 0;
+  	background: #F4F4EA url(../img/logo.jpeg) repeat-x 0 0;
 }
 
 #top .logo {
@@ -163,7 +163,7 @@ img.aligncenter {
   	clear: left;
   	margin-top: 45px;
 	margin-left: 20px;
-  	background: url(../images/logo.jpg) no-repeat;
+  	background: url(../img/logo.jpeg) no-repeat;
 }
 
 #top .logo a span {
@@ -232,7 +232,7 @@ img.aligncenter {
 #header {
 	width: 100%;
 	height: 214px;
-	background: url(../images/header.jpg) no-repeat;
+	background: url(../img/header.png) no-repeat;
 	position: relative;
 	z-index: 1;
 	color: white;
