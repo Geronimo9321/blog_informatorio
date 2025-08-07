@@ -20,11 +20,22 @@
       <div class="logo"><a href="{% static 'img/logo.jpeg/' %}"><span>EL BLOG DEL INFORMATORIO</span></a></div>
       <ul class="login">
         <li class="left">&nbsp;</li>
-        <li>¡Hello Visitante!</li>
-        <li>|</li>
-        <li><a href="#">Iniciar sesión</a></li>
-        <li>|</li>
-        <li><a href="#">Registrarse</a></li>
+        {% if user.is_authenticated %}
+          <li>Hola, {{ user.username }}</li>
+          <li>|</li>
+          <li>
+            <form action="{% url 'usuarios:path_logout' %}" method="post" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" style="all: unset; cursor: pointer; color: #8EF433; text-decoration: underline;">Cerrar Sesión</button>
+            </form>
+          </li>
+        {% else %}
+          <li>¡Hola Visitante!</li>
+          <li>|</li>
+          <li><a href="{% url 'usuarios:path_login' %}">Iniciar sesión</a></li>
+          <li>|</li>
+          <li><a href="{% url 'usuarios:path_registro' %}">Registrarse</a></li>  
+        {% endif %}
       </ul>
     </div>
 
