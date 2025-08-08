@@ -10,7 +10,7 @@
 				{% csrf_token %}
 				{{form.as_p}}
 				<button type="submit">Modificar noticia</button>
-				<a href="{% url 'noticias:listar_noticias' %}">Cancelar</a>
+				<a href="{% url 'noticias:path_listar_noticias' %}">Cancelar</a>
 			</form>
 		</div>
 	</div>

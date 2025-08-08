@@ -11,7 +11,7 @@
             "{{ object.texto }}" - <em>{{ object.usuario }}</em>
         </blockquote>
         <input type="submit" value="CONFIRMAR">
-        <a href="{% url 'noticias:detalle_noticias' object.noticia.pk %}">Cancelar</a>
+        <a href="{% url 'noticias:path_detalle_noticias' object.noticia.pk %}">Cancelar</a>
     </form>
 
 {% endblock contenido_cuerpo %}

@@ -52,12 +52,13 @@
       </li>
       <li> <a href="#">Tematicas del Info<img src="{% static 'images/nav_bullet.jpg' %}" alt="" /></a>
         <ul>
-          <li><a href="#">Etapa 1</a></li>
-          <li><a href="#">Etapa 2</a></li>
-          <li><a href="#">Etapa 3</a></li>
-          <li><a href="#">Eventos &amp; Más</a></li>
+          <li><a href="{% url 'noticias:path_filtrar_noticias' 2 %}">Etapa 1</a></li>
+          <li><a href="{% url 'noticias:path_filtrar_noticias' 3 %}">Etapa 2</a></li>
+          <li><a href="{% url 'noticias:path_filtrar_noticias' 4 %}">Etapa 3</a></li>
+          <li><a href="{% url 'noticias:path_filtrar_noticias' 5 %}">Eventos &amp; Más</a></li>
         </ul>
-      </li>
+      </li>      
+      <li>
       <li><a href="#">Para Profes</a></li>
       <li><a href="#">Para Estudiantes</a></li>
       <li><a href="#">Contactanos</a></li>

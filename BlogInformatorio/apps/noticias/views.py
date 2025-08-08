@@ -41,15 +41,16 @@ def Listar_Noticias(request):
     return render(request, 'Noticias/noticias.html',{'noticias': noticias, 'generos': generos})
 
 def Filtrar_Noticias(request, pk):
-    generos_filtrados = Genero.objects.get(pk = pk)
-    noticias_filtradas = Noticia.objects.filter(Genero=generos_filtrados)
+    generos_filtrados = Genero.objects.get(pk=pk)
+    noticias_filtradas = Noticia.objects.filter(genero=generos_filtrados)
     return render(request, 'Noticias/filtrarNoticias.html', 
                   {'noticias': noticias_filtradas, 'genero': generos_filtrados})
+
 
 class DetalleNoticia(DetailView):
     model = Noticia
     template_name = 'Noticias/detalleNoticias.html'
-    context_object_name = 'noticias'
+    context_object_name = 'noticia'
 
 class CrearNoticia(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Noticia
