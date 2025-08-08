@@ -8,7 +8,7 @@
     	<p>¿Estás seguro que desa eliminar la noticia: "<strong>{{ object.nombre }}</strong>"?</p>
 	    
 	    <input type="submit" value="CONFIRMAR">
-	    <a href="{% url 'noticias:listar_noticias' %}"> CANCELAR</a>
+	    <a href="{% url 'noticias:path_listar_noticias' %}"> CANCELAR</a>
 	</form>
 
 {% endblock contenido_cuerpo %}
