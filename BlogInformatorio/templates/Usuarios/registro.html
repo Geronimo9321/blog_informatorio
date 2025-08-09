@@ -3,29 +3,39 @@
 {% block content %}
 <h2>Registro de Usuario</h2>
 
-<form method="POST" novalidate>
+<form method="POST" novalidate class="contact">
     {% csrf_token %}
     {{ form.non_field_errors }}
 
-    <label for="id_username">Nombre de usuario</label>
-    {{ form.username.errors }}
-    {{ form.username }}
+    <div>
+        <label for="id_username">Nombre de usuario</label>
+        {{ form.username.errors }}
+        {{ form.username }}
+    </div>
 
-    <label for="id_full_name">Nombre completo</label>
-    {{ form.full_name.errors }}
-    <input type="text" name="full_name" id="id_full_name" placeholder="Tu nombre completo" required />
+    <div>
+        <label for="id_full_name">Nombre completo</label>
+        {{ form.full_name.errors }}
+        <input type="text" name="full_name" id="id_full_name" placeholder="Tu nombre completo" required />
+    </div>
 
-    <label for="id_email">Correo electrónico</label>
-    {{ form.email.errors }}
-    {{ form.email }}
+    <div>
+        <label for="id_email">Correo electrónico</label>
+        {{ form.email.errors }}
+        {{ form.email }}
+    </div>
 
-    <label for="id_password1">Contraseña</label>
-    {{ form.password1.errors }}
-    {{ form.password1 }}
+    <div>
+        <label for="id_password1">Contraseña</label>
+        {{ form.password1.errors }}
+        {{ form.password1 }}
+    </div>
 
-    <label for="id_password2">Confirmar contraseña</label>
-    {{ form.password2.errors }}
-    {{ form.password2 }}
+    <div>
+        <label for="id_password2">Confirmar contraseña</label>
+        {{ form.password2.errors }}
+        {{ form.password2 }}
+    </div>
 
     <button type="submit">Registrar</button>
 </form>

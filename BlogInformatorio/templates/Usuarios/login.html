@@ -3,17 +3,21 @@
 {% block content %}
 <h2>Iniciar Sesión</h2>
 
-<form method="POST" novalidate>
+<form method="POST" novalidate class="contact">
   {% csrf_token %}
   {{ form.non_field_errors }}
 
-  <label for="id_username">Nombre de usuario</label>
-  {{ form.username.errors }}
-  {{ form.username }}
+  <div>
+    <label for="id_username">Nombre de usuario</label>
+    {{ form.username.errors }}
+    {{ form.username }}
+  </div>
 
-  <label for="id_password">Contraseña</label>
-  {{ form.password.errors }}
-  {{ form.password }}
+  <div>
+    <label for="id_password">Contraseña</label>
+    {{ form.password.errors }}
+    {{ form.password }}
+  </div>
 
   <button type="submit">Ingresar</button>
 </form>
