@@ -23,7 +23,7 @@ input.button {
   width: 78px;
   height: 45px;
   font-weight: bold;
-  background: #59554A url(../images/buttonCF.jpg) no-repeat left top;
+  background: #59554A url("/static/img/buttonCF.jpg") no-repeat left top; /*Modificado url*/
   border: none;
   cursor: pointer;
   margin-left: 130px;

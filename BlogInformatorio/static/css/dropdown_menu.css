@@ -1,6 +1,6 @@
 #nav {
 	display: block;
-	background: transparent url(../images/nav_bg.jpg) repeat-x left top;
+	background: transparent url("/static/img/nav_bg.jpg") repeat-x left top; /*Modificado url*/
 	padding: 0;
 	margin: 0;
 	height: 34px;
@@ -19,7 +19,7 @@
 	margin: 0;
 	padding: 0;
   	position: relative;
-	background: url(../images/nav_sep.jpg) no-repeat 0 0;
+	background: url("/static/img/nav_sep.jpg") no-repeat 0 0; /*Modificado url*/
 }
 
 #nav li a {
@@ -33,13 +33,13 @@
 }
 
 #nav li a:hover {
-	background: url(../images/nav_over.jpg) repeat-x 0 0;
-	color: white;
+	background: url("/static/img/nav_over.jpg") repeat-x 0 0; /*Modificado url*/
+	color: black;
 }
 
 #nav li a.active {
-	background: url(../images/nav_over.jpg) repeat-x 0 0;
-  	color: white;
+	background: url("/static/img/nav_over.jpg") repeat-x 0 0; /*Modificado url*/
+  	color: black;
 	font-weight: bold;
 }
 
@@ -51,14 +51,14 @@
 }
 
 #nav li.left {
-	background: url(../images/nav_l.jpg) no-repeat left top;
+	background: url("/static/img/nav_l.jpg") no-repeat left top; /*Modificado url*/
 	width: 36px;
 	height: 34px;
 	float: left;
 }
 
 #nav li.right {
-	background: url(../images/nav_r.jpg) no-repeat right top;
+	background: url("/static/img/nav_r.jpg") no-repeat right top; /*Modificado url*/
 	width: 36px;
 	height: 34px;
 	float: right;

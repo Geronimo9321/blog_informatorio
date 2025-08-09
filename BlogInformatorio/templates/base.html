@@ -6,7 +6,7 @@
 <head>
     <title>{% block title %}BLOG INFORMATORIO{% endblock %}</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
     <script type="text/javascript" src="{% static 'js/mootools-release-1.11.js' %}"></script>
     <script src="{% static 'js/dropDownMenu.js' %}" type="text/javascript"></script>
     <!--[if IE 7]>
@@ -64,14 +64,7 @@
       <li><a href="#">Contactanos</a></li>
       <li class="sep">&nbsp;</li>
       <li class="right">&nbsp;</li>
-    </ul>
-
-    <!-- Header -->
-    <div id="header">
-      {% block header %}
-      <div class="intro">
-        <h2>Ya estoy en</h2>
-        <h1>Your nice and fancy slogan</h1>
+      <div>
         <form method="get" id="searchform" action="#">
           <div>
             <input class="searchField" type="text" name="q" />
@@ -80,8 +73,17 @@
           </div>
         </form>
       </div>
-      {% endblock %}
-    </div>
+    </ul>
+
+    <!-- Header -->
+    <div id="header">
+      
+      <div class="intro">
+        <h1>Your nice and fancy slogan</h1>
+        <p>Lorem ipsum</p>
+      </div>
+      
+    </div>   
 
     <!-- Main Content -->
     <div id="content">
