@@ -160,7 +160,7 @@ img.aligncenter {
 #top {
   height: 90px;
   padding: 0 25px;
-  background: #0099cc url("/static/img/logo.jpeg") repeat-x 0 0; /*Modificado url*/
+  background: #0099 url("/static/img/logo.jpeg") repeat-x 0 0; /*Modificado url*/
 }
 
 #top .logo {
