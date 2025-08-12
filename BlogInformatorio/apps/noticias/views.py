@@ -3,48 +3,40 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
-from .models import Noticia
-from .forms import FormularioCrearNoticia, FormularioModificarNoticia 
-from .models import Genero
+from .models import Noticia, Genero
 
-#DECORADOR PARA UNA VBF QUE CONTROLA SI EL USUARIO ESTA LOGUEADO
+from .forms import FormularioCrearNoticia, FormularioModificarNoticia
+
 from django.contrib.auth.decorators import login_required
-
-#MIXINS PARA UNA VBC QUE CONTROLA SI EL USUARIO ESTA LOGUEADO
-from django.contrib.auth.mixins import LoginRequiredMixin
-
-#Decorador para una VBF para controlar si el usuario es estaff
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.admin.views.decorators import staff_member_required
+from django.utils.decorators import method_decorator
 
-#MIXIN PARAUNA VBC PARA CONTROLAR EL TIPO DE USUARIO (lo usamos para ver si es staff)
-from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.models import Group
 
-#VISTA BASADA EN FUNCIONES
+
 @login_required
 @staff_member_required
 def Listar_Noticias(request):
     valor_a_ordenar = request.GET.get('orden', None)
 
-    #Ordenamiento
-    if valor_a_ordenar:
-        if valor_a_ordenar == 'asc':
-            noticias = Noticia.objects.all().order_by('creado')
-        elif valor_a_ordenar == 'desc':
-            noticias = Noticia.objects.all().order_by('-creado')
-        else:
-            noticias = Noticia.objects.all()
+    if valor_a_ordenar == 'asc':
+        noticias = Noticia.objects.all().order_by('creado')
+    elif valor_a_ordenar == 'desc':
+        noticias = Noticia.objects.all().order_by('-creado')
     else:
         noticias = Noticia.objects.all()
-    
+
     generos = Genero.objects.all()
-    
-    return render(request, 'Noticias/noticias.html',{'noticias': noticias, 'generos': generos})
+
+    return render(request, 'Noticias/noticias.html', {'noticias': noticias, 'generos': generos})
+
 
 def Filtrar_Noticias(request, pk):
-    generos_filtrados = Genero.objects.get(pk=pk)
-    noticias_filtradas = Noticia.objects.filter(genero=generos_filtrados)
-    return render(request, 'Noticias/filtrarNoticias.html', 
-                  {'noticias': noticias_filtradas, 'genero': generos_filtrados})
+    genero_filtrado = Genero.objects.get(pk=pk)
+    noticias_filtradas = Noticia.objects.filter(genero=genero_filtrado)
+    return render(request, 'Noticias/filtrarNoticias.html',
+                  {'noticias': noticias_filtradas, 'genero': genero_filtrado})
 
 
 class DetalleNoticia(DetailView):
@@ -52,24 +44,32 @@ class DetalleNoticia(DetailView):
     template_name = 'Noticias/detalleNoticias.html'
     context_object_name = 'noticia'
 
-class CrearNoticia(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+
+class ColaboradorRequiredMixin(UserPassesTestMixin):
+    def test_func(self):
+        # Retorna True si el usuario está en el grupo 'Colaborador'
+        return self.request.user.groups.filter(name='Colaborador').exists()
+
+    def handle_no_permission(self):
+        # Opcional: redirigir o mostrar error personalizado
+        from django.http import HttpResponseForbidden
+        return HttpResponseForbidden("No tienes permiso para realizar esta acción.")
+
+
+class CrearNoticia(LoginRequiredMixin, ColaboradorRequiredMixin, CreateView):
     model = Noticia
     template_name = 'Noticias/crearNoticias.html'
     form_class = FormularioCrearNoticia
     success_url = reverse_lazy('noticias:path_listar_noticias')
 
-    def test_func(self):
-        if self.request.user.is_staff:
-            return True
-        else:
-            return False
 
-class ModificarNoticia(UpdateView):
+class ModificarNoticia(LoginRequiredMixin, ColaboradorRequiredMixin, UpdateView):
     model = Noticia
     template_name = 'Noticias/modificarNoticias.html'
     form_class = FormularioModificarNoticia
     success_url = reverse_lazy('noticias:path_listar_noticias')
 
-class BorrarNoticia(DeleteView):
+
+class BorrarNoticia(LoginRequiredMixin, ColaboradorRequiredMixin, DeleteView):
     model = Noticia
     success_url = reverse_lazy('noticias:path_listar_noticias')

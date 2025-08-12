@@ -2,9 +2,9 @@
 
 {% block contenido_cuerpo %}
     <p>
-        <h1>
+        <h2>
             CREAR NUEVA NOTICIA
-        </h1>
+        </h2>
         <div>
             <form method="post" enctype="multipart/form-data">{% csrf_token %}
                 {{form.as_p}}
