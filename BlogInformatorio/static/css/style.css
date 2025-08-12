@@ -177,11 +177,11 @@ img.aligncenter {
   clear: left;
   margin-top: 45px;
   margin-left: 20px;
-  background: url("../img/logo.jpeg") no-repeat; /* header en lugar de logo */
+  
 }
 
 #top .logo a span {
-  color: #66FF00;
+  color: #ffffff;
 }
 
 #top .logo a {
@@ -298,6 +298,8 @@ img.aligncenter {
   width: 158px;
   height: 23px;
   line-height: 23px;
+  position: relative;
+  top: 1px;
 }
 
 #header #searchform .searchSubmit {

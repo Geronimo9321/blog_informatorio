@@ -53,7 +53,7 @@
           <li><a href="#">Integrantes</a></li>
         </ul>
       </li>
-      <li> <a href="#">Tematicas del Info<img src="{% static 'images/nav_bullet.jpg' %}" alt="" /></a>
+      <li> <a href="#">Tematicas del Info<img src="{% static 'img/nav_bullet.jpg' %}" alt="" /></a>
         <ul>
           <li><a href="{% url 'noticias:path_filtrar_noticias' 1 %}">Etapa 1</a></li>
           <li><a href="{% url 'noticias:path_filtrar_noticias' 2 %}">Etapa 2</a></li>
@@ -70,7 +70,7 @@
       <div>
         <form method="get" id="searchform" action="#">
           <div>
-            <input class="searchField" type="text" name="q" />
+            <input class="searchField" type="text" name="q" placeholder="buscar..." />
             <input class="searchSubmit" type="submit" value="" />
             <input type="hidden" name="sitesearch" value="" />
           </div>
@@ -82,8 +82,8 @@
     <div id="header">
       
       <div class="intro">
-        <h1>Hola Gero</h1>
-        <p>Esto es el header</p>
+        <h1></h1>
+        <p></p>
       </div>
       
     </div>   
@@ -99,14 +99,19 @@
       <h2>Más Noticias</h2>
       <ul id="news">
         <li>
-          <a href="#">Etapa 1</a>
-          <h3>News Heading H3</h3>
-          <p>Short news... <a href="#">More &raquo;</a></p>
+          <a href="{% url 'noticias:path_filtrar_noticias' 1 %}">Etapa 1</a> <br>
+          <a href="{% url 'noticias:path_filtrar_noticias' 1 %}">Etapa 2</a> <br>
+          <a href="{% url 'noticias:path_filtrar_noticias' 1 %}">Etapa 3</a> <br>
+          <a href="{% url 'noticias:path_filtrar_noticias' 1 %}">Webinar 01/09</a> <br>
+          <a href="{% url 'noticias:path_filtrar_noticias' 1 %}">Eventos del Info</a> <br>
         </li>
         <!-- Más noticias aquí si quieres -->
       </ul>
-      <h2>Advertising</h2>
-      <p>Put Google Ads Here</p>
+      <h2>Contactanos</h2>
+      <a href="#">Instagram</a> <br>
+      <a href="#">Facebook</a> <br>
+      <a href="#">Whatsapp</a> <br>
+      <a href="#">Email</a> <br>
       {% endblock %}
     </div>
 
@@ -125,11 +130,7 @@
       </div>
       <div class="foot_r">&nbsp;</div>
       <div class="backToTop"><a class="backToTop" href="#">&nbsp;</a></div>
-      <div class="foot_info">
-        <p>Valid <a target="_blank" href="http://validator.w3.org/check?uri=referer">XHTML</a> &amp; 
-           <a target="_blank" href="http://jigsaw.w3.org/css-validator">CSS</a>. Template by 
-           <a href="http://web-kreation.com">Web-kreation</a></p>
-      </div>
+
     </div>
   </div>
 </div>
