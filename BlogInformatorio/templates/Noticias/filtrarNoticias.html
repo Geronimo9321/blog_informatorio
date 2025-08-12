@@ -17,8 +17,11 @@
 
                 <p>
                     <a href="{% url 'noticias:path_detalle_noticias' noticia.pk %}">Ver noticia</a>
-                    <a href="{% url 'noticias:path_modificar_noticias' noticia.pk %}">Modificar</a>
-                    <a href="{% url 'noticias:path_borrar_noticias' noticia.pk %}">Eliminar</a>
+
+                    {% if user.is_authenticated and user.is_staff %}
+                        <a href="{% url 'noticias:path_modificar_noticias' noticia.pk %}">Modificar</a>
+                        <a href="{% url 'noticias:path_borrar_noticias' noticia.pk %}">Eliminar</a>
+                    {% endif %}
                 </p>
             </div>
         {% endfor %}
