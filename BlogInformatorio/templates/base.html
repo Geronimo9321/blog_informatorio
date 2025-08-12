@@ -48,9 +48,9 @@
       <li><a class="nav-link" href="{% url 'path_home' %}">Home</a></li>
       <li> <a href="#">Sobre el Info<img src="{% static 'img/nav_bullet.jpg' %}" alt="" /></a>
         <ul>
-          <li><a href="#">Nuestra Institución</a></li>
-          <li><a href="#">Donde estamos</a></li>
-          <li><a href="#">Integrantes</a></li>
+          <li><a href="{% url 'informatorio:path_nuestra_institucion' %}">Nuestra Institución</a></li>
+          <li><a href="{% url 'informatorio:path_donde_estamos' %}">Donde estamos</a></li>
+          <li><a href="{% url 'informatorio:path_integrantes' %}">Integrantes</a></li>
         </ul>
       </li>
       <li> <a href="#">Tematicas del Info<img src="{% static 'img/nav_bullet.jpg' %}" alt="" /></a>
@@ -62,8 +62,8 @@
         </ul>
       </li>      
       <li>
-      <li><a href="#">Para Profes</a></li>
-      <li><a href="#">Para Estudiantes</a></li>
+      <li><a href="{% url 'informatorio:path_para_profes' %}">Para Profes</a></li>
+      <li><a href="{% url 'informatorio:path_para_estudiantes' %}">Para Estudiantes</a></li>
       <li><a href="#">Contactanos</a></li>
       <li class="sep">&nbsp;</li>
       <li class="right">&nbsp;</li>
