@@ -361,6 +361,9 @@ img.aligncenter {
   border-top: 1px solid #ddd;
 }
 
+#foot_content {
+  
+}
 #sidebar {
   padding-right: 10px; /* espacio a la derecha */
   text-align: right; /* alinea todo el texto a la derecha */

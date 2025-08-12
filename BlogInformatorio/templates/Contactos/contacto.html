@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block contenido_cuerpo %}
+	
+    <h1>Formulario de Contacto</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enviar</button>
+    </form>
+
+    <a href="https://www.instagram.com/informatorio/?hl=es">Instagram</a> 
+    <a href="https://www.facebook.com/informatorio.chaco">Facebook</a> 
+    <a href="https://wa.me/5493624625154">Whatsapp</a> <br>
+
+{% endblock contenido_cuerpo %}

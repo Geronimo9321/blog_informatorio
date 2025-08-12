@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block contenido_cuerpo %}
+	<h1>{{ titulo }}</h1> {#Mostraria el titulo de la página #}
+    <div>
+        {{ contenido|safe }}
+    </div>    
+{% endblock contenido_cuerpo %}
