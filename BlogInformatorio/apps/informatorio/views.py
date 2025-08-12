@@ -1,7 +1,17 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Pagina
+from django.shortcuts import render
 
 # Create your views here.
-def mostrar_pagina(request, slug):
-	pagina = get_object_or_404(Pagina, slug=slug)
-	return render(request, f'Informatorio/{slug}.html', {'contenido': pagina.contenido})
+def nuestra_institucion(request):
+	return render(request, 'Informatorio/nuestra_institucion.html')
+
+def donde_estamos(request):
+	return render(request, 'Informatorio/donde_estamos.html')
+
+def integrantes(request):
+	return render(request, 'Informatorio/integrantes.html')
+
+def para_profes(request):
+	return render(request, 'Informatorio/para_profes.html')
+
+def para_estudiantes(request):
+	return render(request, 'Informatorio/para_estudiantes.html')
