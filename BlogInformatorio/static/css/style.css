@@ -391,7 +391,7 @@ img.aligncenter {
 
 #sidebar {
   padding-right: 10px; /* espacio a la derecha */
-  text-align: right; /* alinea todo el texto a la derecha */
+
 }
 
 #sidebar h2,
@@ -475,3 +475,4 @@ img.aligncenter {
 .contenedor-comentarios button:hover {
   background-color: #6cb52e;
 }
+

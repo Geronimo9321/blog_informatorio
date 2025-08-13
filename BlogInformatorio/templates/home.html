@@ -1,22 +1,41 @@
 {% extends 'base.html' %}
- 
 {% block content %}
 
-<h1>Ultimas Noticias </h1>
+<h1>Últimas Noticias</h1>
 
-<p>Esto es una prueba.</p>
+<form id="home-filtros" method="get" style="margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
+    <label for="orden" style="font-weight: bold;">Ordenar por fecha:</label>
+    <select name="orden" id="orden" onchange="this.form.submit()" style="padding: 5px 10px; font-size: 1em; cursor: pointer;">
+        <option value="desc" {% if orden == 'desc' %}selected{% endif %}>Más recientes primero</option>
+        <option value="asc" {% if orden == 'asc' %}selected{% endif %}>Más antiguas primero</option>
+    </select>
+
+    <label for="etapa" style="font-weight: bold;">Filtrar por etapa:</label>
+    <select name="etapa" id="etapa" onchange="this.form.submit()" style="padding: 5px 10px; font-size: 1em; cursor: pointer;">
+        <option value="">Todas</option>
+        {% for g in generos %}
+            <option value="{{ g.pk }}" {% if g.pk|stringformat:"s" == etapa %}selected{% endif %}>{{ g.nombre }}</option>
+        {% endfor %}
+    </select>
+</form>
+
 {% if noticias %}
-	<ul>
-		{% for noticia in noticias %}
-			<li>
-				<h2>{{ noticia.titulo }}</h2>
-				<p>{{ noticia.genero }}</p>
-				<a href="{% url 'noticias:path_filtrar_noticias' %}">Leer más</a>
-			</li>
-		{% endfor %}
-	</ul>
+    <ul>
+        {% for noticia in noticias %}
+            <li style="margin-bottom: 30px; list-style: none;">
+                {% if noticia.imagen %}
+                    <img src="{{ noticia.imagen.url }}" width="300" height="300" alt="Imagen de {{ noticia.nombre }}" style="margin-bottom: 10px;">
+                {% endif %}
+                <h2>{{ noticia.nombre }}</h2>
+                <p>{{ noticia.genero.nombre }}</p>
+                <p><strong>Fecha:</strong> {{ noticia.creado|date:"d/m/Y H:i" }}</p>
+                <p>{{ noticia.descripcion|truncatewords:25 }}</p>
+                <a href="{% url 'noticias:path_detalle_noticias' noticia.pk %}">Leer más</a>
+            </li>
+        {% endfor %}
+    </ul>
 {% else %}
-	<p>No hay noticias disponibles.</p>
+    <p>No hay noticias disponibles.</p>
 {% endif %}
 
 {% endblock content %}
