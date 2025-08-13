@@ -1,7 +1,22 @@
 {% extends 'base.html' %}
  
 {% block content %}
-<p>
-<h1>Esto es el home</h1>
-</p>
+
+<h1>Ultimas Noticias </h1>
+
+<p>Esto es una prueba.</p>
+{% if noticias %}
+	<ul>
+		{% for noticia in noticias %}
+			<li>
+				<h2>{{ noticia.titulo }}</h2>
+				<p>{{ noticia.genero }}</p>
+				<a href="{% url 'noticias:path_filtrar_noticias' %}">Leer más</a>
+			</li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<p>No hay noticias disponibles.</p>
+{% endif %}
+
 {% endblock content %}
