@@ -12,13 +12,15 @@
                 {% endif %}
 
                 <h2>{{ noticia.nombre }}</h2>
+                <p>{{ noticia.descripcion|truncatewords:30 }}</p>
+
                 <p><strong>GÉNERO: </strong>{{ noticia.genero.nombre }}</p>
                 <p><strong>Fecha de Publicación: </strong>{{ noticia.creado|date:"d/m/Y H:i" }}</p>
 
                 <p>
                     <a href="{% url 'noticias:path_detalle_noticias' noticia.pk %}">Ver noticia</a>
 
-                    {% if user.is_authenticated and user.is_staff %}
+                    {% if user.is_authenticated and es_colaborador %}
                         <a href="{% url 'noticias:path_modificar_noticias' noticia.pk %}">Modificar</a>
                         <a href="{% url 'noticias:path_borrar_noticias' noticia.pk %}">Eliminar</a>
                     {% endif %}

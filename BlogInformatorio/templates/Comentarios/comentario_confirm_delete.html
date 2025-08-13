@@ -1,17 +1,15 @@
 {% extends 'base.html' %}
 
-{% block contenido_cuerpo %}
-	
-	<h1>ELIMINAR COMENTARIOS</h1>
+{% block content %}
+  <h1>Eliminar comentario</h1>
 
-    <form method="post">
-        {% csrf_token %}
-        <p>¿Estás seguro que deseas eliminar el siguiente comentario?</p>
-        <blockquote>
-            "{{ object.texto }}" - <em>{{ object.usuario }}</em>
-        </blockquote>
-        <input type="submit" value="CONFIRMAR">
-        <a href="{% url 'noticias:path_detalle_noticias' object.noticia.pk %}">Cancelar</a>
-    </form>
-
-{% endblock contenido_cuerpo %}
+  <form method="post">
+    {% csrf_token %}
+    <p>¿Estás seguro que deseas eliminar este comentario?</p>
+    <blockquote>
+      "{{ object.texto }}" - <em>{{ object.usuario }}</em>
+    </blockquote>
+    <button type="submit">Confirmar</button>
+    <a href="{% url 'noticias:path_detalle_noticias' object.noticia.pk %}">Cancelar</a>
+  </form>
+{% endblock %}

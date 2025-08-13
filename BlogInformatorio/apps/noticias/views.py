@@ -2,21 +2,15 @@ from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-
-from .models import Noticia, Genero
-
-from .forms import FormularioCrearNoticia, FormularioModificarNoticia
-
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.utils.decorators import method_decorator
 
-from django.contrib.auth.models import Group
+from .models import Noticia, Genero
+from .forms import FormularioCrearNoticia, FormularioModificarNoticia
 
 
-@login_required
-@staff_member_required
+@method_decorator([staff_member_required,], name='dispatch')
 def Listar_Noticias(request):
     valor_a_ordenar = request.GET.get('orden', None)
 
@@ -44,14 +38,17 @@ class DetalleNoticia(DetailView):
     template_name = 'Noticias/detalleNoticias.html'
     context_object_name = 'noticia'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['es_colaborador'] = self.request.user.groups.filter(name='Colaborador').exists()
+        return context
+
 
 class ColaboradorRequiredMixin(UserPassesTestMixin):
     def test_func(self):
-        # Retorna True si el usuario está en el grupo 'Colaborador'
         return self.request.user.groups.filter(name='Colaborador').exists()
 
     def handle_no_permission(self):
-        # Opcional: redirigir o mostrar error personalizado
         from django.http import HttpResponseForbidden
         return HttpResponseForbidden("No tienes permiso para realizar esta acción.")
 

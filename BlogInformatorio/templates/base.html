@@ -14,106 +14,113 @@
     <style>#dropdownMenu li ul ul {margin-left: 100px;}</style><![endif]-->
 </head>
 <body>
-<div id="container">
-  <div id="wrapper">
-    <!-- Topbar -->
-    <div id="top">
-      <div class="logo">
-        <a href="#"><span>EL BLOG DEL INFORMATORIO</span></a>
+  <div id="container">
+
+    <div id="wrapper">
+      <!-- Topbar -->
+      <div id="top">
+        <div class="logo">
+          <a href="#"><span>EL BLOG DEL INFORMATORIO</span></a>
+        </div>
+        <ul class="login">
+          <li class="left">&nbsp;</li>
+          {% if user.is_authenticated %}
+            <li>Hola, {{ user.username }}</li>
+            <li>|</li>
+
+            {% for group in user.groups.all %}
+              {% if group.name == 'Colaborador' %}
+                <li><a href="{% url 'noticias:path_crear_noticias' %}">Crear noticia</a></li>
+                <li>|</li>
+              {% endif %}
+            {% endfor %}
+
+            <li>
+              <form action="{% url 'usuarios:path_logout' %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" style="all: unset; cursor: pointer; color: #8EF433; text-decoration: underline;">Cerrar Sesión</button>
+              </form>
+            </li>
+          {% else %}
+            <li>¡Hola Visitante!</li>
+            <li>|</li>
+            <li><a href="{% url 'usuarios:path_login' %}">Iniciar sesión</a></li>
+            <li>|</li>
+            <li><a href="{% url 'usuarios:path_registro' %}">Registrarse</a></li>  
+          {% endif %}
+        </ul>
       </div>
-      <ul class="login">
+
+      <!-- Navigation -->
+      <ul id="nav">
         <li class="left">&nbsp;</li>
-        {% if user.is_authenticated %}
-          <li>Hola, {{ user.username }}</li>
-          <li>|</li>
-          <li>
-            <form action="{% url 'usuarios:path_logout' %}" method="post" style="display:inline;">
-              {% csrf_token %}
-              <button type="submit" style="all: unset; cursor: pointer; color: #8EF433; text-decoration: underline;">Cerrar Sesión</button>
-            </form>
-          </li>
-        {% else %}
-          <li>¡Hola Visitante!</li>
-          <li>|</li>
-          <li><a href="{% url 'usuarios:path_login' %}">Iniciar sesión</a></li>
-          <li>|</li>
-          <li><a href="{% url 'usuarios:path_registro' %}">Registrarse</a></li>  
-        {% endif %}
-      </ul>
-    </div>
-
-    <!-- Navigation -->
-    <ul id="nav">
-      <li class="left">&nbsp;</li>
-      <li><a class="nav-link" href="{% url 'path_home' %}">Home</a></li>
-      <li> <a href="#">Sobre el Info<img src="{% static 'img/nav_bullet.jpg' %}" alt="" /></a>
-        <ul>
-          <li><a href="{% url 'informatorio:path_nuestra_institucion' %}">Nuestra Institución</a></li>
-          <li><a href="{% url 'informatorio:path_donde_estamos' %}">Donde estamos</a></li>
-          <li><a href="{% url 'informatorio:path_integrantes' %}">Integrantes</a></li>
-        </ul>
-      </li>
-      <li> <a href="#">Tematicas del Info<img src="{% static 'img/nav_bullet.jpg' %}" alt="" /></a>
-        <ul>
-          <li><a href="{% url 'noticias:path_filtrar_noticias' 1 %}">Etapa 1</a></li>
-          <li><a href="{% url 'noticias:path_filtrar_noticias' 2 %}">Etapa 2</a></li>
-          <li><a href="{% url 'noticias:path_filtrar_noticias' 3 %}">Etapa 3</a></li>
-          <li><a href="{% url 'noticias:path_filtrar_noticias' 4 %}">Eventos &amp; Más</a></li>
-        </ul>
-      </li>      
-      <li>
-      <li><a href="{% url 'informatorio:path_para_profes' %}">Para Profes</a></li>
-      <li><a href="{% url 'informatorio:path_para_estudiantes' %}">Para Estudiantes</a></li>
-      <li><a href="#">Contactanos</a></li>
-      <li class="sep">&nbsp;</li>
-      <li class="right">&nbsp;</li>
-      <div>
-        <form method="get" id="searchform" action="#">
-          <div>
-            <input class="searchField" type="text" name="q" placeholder="buscar..." />
-            <input class="searchSubmit" type="submit" value="" />
-            <input type="hidden" name="sitesearch" value="" />
-          </div>
-        </form>
-      </div>
-    </ul>
-
-    <!-- Header -->
-    <div id="header">
-      
-      <div class="intro">
-        <h1></h1>
-        <p></p>
-      </div>
-      
-    </div>   
-
-    <!-- Main Content -->
-    <div id="content">
-      {% block content %}{% endblock %}
-    </div>
-
-    <!-- Sidebar -->
-    <div id="sidebar">
-      {% block sidebar %}
-      <h2>Más Noticias</h2>
-      <ul id="news">
-        <li>
-          <a href="{% url 'noticias:path_filtrar_noticias' 1 %}">Etapa 1</a> <br>
-          <a href="{% url 'noticias:path_filtrar_noticias' 2 %}">Etapa 2</a> <br>
-          <a href="{% url 'noticias:path_filtrar_noticias' 3 %}">Etapa 3</a> <br>
-          <a href="{% url 'noticias:path_filtrar_noticias' 1 %}">Webinar 01/09</a> <br>
-          <a href="{% url 'noticias:path_filtrar_noticias' 4 %}">Eventos del Info</a> <br>
+        <li><a class="nav-link" href="{% url 'path_home' %}">Home</a></li>
+        <li> <a href="#">Sobre el Info<img src="{% static 'img/nav_bullet.jpg' %}" alt="" /></a>
+          <ul>
+            <li><a href="{% url 'informatorio:path_nuestra_institucion' %}">Nuestra Institución</a></li>
+            <li><a href="{% url 'informatorio:path_donde_estamos' %}">Donde estamos</a></li>
+            <li><a href="{% url 'informatorio:path_integrantes' %}">Integrantes</a></li>
+          </ul>
         </li>
-        <!-- Más noticias aquí si quieres -->
+        <li> <a href="#">Tematicas del Info<img src="{% static 'img/nav_bullet.jpg' %}" alt="" /></a>
+          <ul>
+            <li><a href="{% url 'noticias:path_filtrar_noticias' 1 %}">Etapa 1</a></li>
+            <li><a href="{% url 'noticias:path_filtrar_noticias' 2 %}">Etapa 2</a></li>
+            <li><a href="{% url 'noticias:path_filtrar_noticias' 3 %}">Etapa 3</a></li>
+            <li><a href="{% url 'noticias:path_filtrar_noticias' 4 %}">Eventos &amp; Más</a></li>
+          </ul>
+        </li>      
+        <li><a href="{% url 'informatorio:path_para_profes' %}">Para Profes</a></li>
+        <li><a href="{% url 'informatorio:path_para_estudiantes' %}">Para Estudiantes</a></li>
+        <li><a href="#">Contactanos</a></li>
+        <li class="sep">&nbsp;</li>
+        <li class="right">&nbsp;</li>
+        <div>
+          <form method="get" id="searchform" action="#">
+            <div>
+              <input class="searchField" type="text" name="q" placeholder="buscar..." />
+              <input class="searchSubmit" type="submit" value="" />
+              <input type="hidden" name="sitesearch" value="" />
+            </div>
+          </form>
+        </div>
       </ul>
-      <h2>Contactanos</h2>
-      <a href="https://www.instagram.com/informatorio/?hl=es">Instagram</a> <br>
-      <a href="https://www.facebook.com/informatorio.chaco">Facebook</a> <br>
-      <a href="https://wa.me/5493624625154">Whatsapp</a> <br>
-      <a href="mailto:informatorio@chaco.gob.ar">Email</a> <br>
-      {% endblock %}
-    </div>
+
+      <!-- Header -->
+      <div id="header">
+        <div class="intro">
+          <h1></h1>
+          <p></p>
+        </div>
+      </div>   
+
+      <!-- Main Content -->
+      <div id="content">
+        {% block content %}{% endblock %}
+      </div>
+
+      <!-- Sidebar -->
+      <div id="sidebar">
+        {% block sidebar %}
+        <h2>Más Noticias</h2>
+        <ul id="news">
+          <li>
+            <a href="{% url 'noticias:path_filtrar_noticias' 1 %}">Etapa 1</a> <br>
+            <a href="{% url 'noticias:path_filtrar_noticias' 2 %}">Etapa 2</a> <br>
+            <a href="{% url 'noticias:path_filtrar_noticias' 3 %}">Etapa 3</a> <br>
+            <a href="{% url 'noticias:path_filtrar_noticias' 1 %}">Webinar 01/09</a> <br>
+            <a href="{% url 'noticias:path_filtrar_noticias' 4 %}">Eventos del Info</a> <br>
+          </li>
+        </ul>
+        <h2>Contactanos</h2>
+        <a href="https://www.instagram.com/informatorio/?hl=es">Instagram</a> <br>
+        <a href="https://www.facebook.com/informatorio.chaco">Facebook</a> <br>
+        <a href="https://wa.me/5493624625154">Whatsapp</a> <br>
+        <a href="mailto:informatorio@chaco.gob.ar">Email</a> <br>
+        {% endblock %}
+      </div>
+
+    </div> <!-- cierre wrapper -->
 
     <!-- Footer -->
     <div id="footer">
@@ -131,14 +138,8 @@
       </div>
       <div class="foot_r">&nbsp;</div>
       <div class="backToTop"><a class="backToTop" href="#">&nbsp;</a></div>
-
     </div>
-  </div>
-</div>
+
+  </div> <!-- cierre container -->
 </body>
 </html>
-
-{% block contenido_cuerpo %}
-
-{% endblock contenido_cuerpo %}
-
