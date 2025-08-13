@@ -20,7 +20,7 @@
                 <p>
                     <a href="{% url 'noticias:path_detalle_noticias' noticia.pk %}">Ver noticia</a>
 
-                    {% if user.is_authenticated and user.is_staff %}
+                    {% if user.is_authenticated and es_colaborador %}
                         <a href="{% url 'noticias:path_modificar_noticias' noticia.pk %}">Modificar</a>
                         <a href="{% url 'noticias:path_borrar_noticias' noticia.pk %}">Eliminar</a>
                     {% endif %}

@@ -4,38 +4,52 @@
     <h1>ESTÁS LEYENDO: {{ noticia.nombre }}</h1>
 
     <div class="contenedor-noticia">
-       {% if noticia.imagen %}
-        <img src="{{ noticia.imagen.url }}" alt="Imagen de la noticia">
-       {% else %}
-        <p>Imagen no disponible.</p>
-       {% endif %}
-       
-       <div class="contenido-texto">
-           <p><strong>Título: </strong>{{ noticia.nombre }}</p>
-           <p><strong>Género: </strong>{{ noticia.genero.nombre }}</p>
+        {% if noticia.imagen %}
+            <img src="{{ noticia.imagen.url }}" alt="Imagen de la noticia">
+        {% else %}
+            <p>Imagen no disponible.</p>
+        {% endif %}
+        
+        <div class="contenido-texto">
+            <p><strong>Título: </strong>{{ noticia.nombre }}</p>
+            <p><strong>Género: </strong>{{ noticia.genero.nombre }}</p>
 
-           <hr>
+            <hr>
 
-           <h2>Descripción</h2>
-           <p>{{ noticia.descripcion|safe }}</p>
-       </div>
+            <h2>Descripción</h2>
+            <p>{{ noticia.descripcion|safe }}</p>
+
+            {% if user.is_authenticated %}
+                {% if es_colaborador %}
+                    <a href="{% url 'noticias:path_modificar_noticias' noticia.pk %}">Modificar Noticia</a>
+                    <a href="{% url 'noticias:path_borrar_noticias' noticia.pk %}">Eliminar Noticia</a>
+                {% endif %}
+            {% endif %}
+        </div>
     </div>
 
     <div class="contenedor-comentarios">
         <h1>COMENTARIOS</h1>
-    
+
         {% for c in noticia.misComentarios %}
             <p>{{ c.texto }} / {{ c.usuario }}
-                {% if c.usuario == user or user.is_staff %}
+                {% if c.usuario == user %}
                     <a href="{% url 'comentarios:path_eliminar_comentario' c.pk %}">Eliminar</a>
+                {% else %}
+                    {% if user.is_authenticated %}
+                        {% if es_colaborador %}
+                            <a href="{% url 'comentarios:path_eliminar_comentario' c.pk %}">Eliminar</a>
+                        {% endif %}
+                    {% endif %}
                 {% endif %}
             </p>
         {% empty %}
             <p>No hay comentarios aún.</p>
         {% endfor %}
-    
+
         {% if user.is_authenticated %}
-            <form method="POST" action="{% url 'comentarios:path_comentar' noticia.pk %}">{% csrf_token %}
+            <form method="POST" action="{% url 'comentarios:path_comentar' noticia.pk %}">
+                {% csrf_token %}
                 <textarea name="comentario" rows="5" cols="30"></textarea>
                 <button type="submit">COMENTAR</button>
             </form>
