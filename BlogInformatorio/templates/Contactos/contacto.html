@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block contenido_cuerpo %}
+{% block content %}
 	
     <h1>Formulario de Contacto</h1>
 
@@ -9,9 +9,11 @@
         {{ form.as_p }}
         <button type="submit">Enviar</button>
     </form>
-
-    <a href="https://www.instagram.com/informatorio/?hl=es">Instagram</a> 
-    <a href="https://www.facebook.com/informatorio.chaco">Facebook</a> 
-    <a href="https://wa.me/5493624625154">Whatsapp</a> <br>
-
-{% endblock contenido_cuerpo %}
+    <div>
+        <h3>Tambien podes escribirnos en nuestras redes sociales y canal de Whatsapp</h3>
+        <a href="https://www.instagram.com/informatorio/?hl=es">Instagram</a> 
+        <a href="https://www.facebook.com/informatorio.chaco">Facebook</a> 
+        <a href="https://wa.me/5493624625154">Whatsapp</a> <br>
+    </div>
+    
+{% endblock content %}
