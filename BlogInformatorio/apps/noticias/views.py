@@ -29,8 +29,17 @@ def Listar_Noticias(request):
 def Filtrar_Noticias(request, pk):
     genero_filtrado = Genero.objects.get(pk=pk)
     noticias_filtradas = Noticia.objects.filter(genero=genero_filtrado)
-    return render(request, 'Noticias/filtrarNoticias.html',
-                  {'noticias': noticias_filtradas, 'genero': genero_filtrado})
+    
+    es_colaborador = False
+    if request.user.is_authenticated:
+        es_colaborador = request.user.groups.filter(name='Colaborador').exists()
+    
+    return render(request, 'Noticias/filtrarNoticias.html', {
+        'noticias': noticias_filtradas,
+        'genero': genero_filtrado,
+        'es_colaborador': es_colaborador
+    })
+
 
 
 class DetalleNoticia(DetailView):
