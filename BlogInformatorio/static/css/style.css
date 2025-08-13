@@ -351,18 +351,22 @@ img.aligncenter {
 }
 
 /***** FOOTER *****/
-#footer {
-  clear: both;
-  font-size: 0.8em;
-  text-align: center;
-  padding: 20px;
-  color: #555;
-  background: #f3f3f3;
-  border-top: 1px solid #ddd;
+#footer ul {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#footer ul li {
+  display: block;
+  margin: 0;
 }
 
 #foot_content {
-  
+  display: inline;
 }
 #sidebar {
   padding-right: 10px; /* espacio a la derecha */
