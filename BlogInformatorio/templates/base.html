@@ -62,7 +62,7 @@
             <li><a href="{% url 'informatorio:path_integrantes' %}">Integrantes</a></li>
           </ul>
         </li>
-        <li> <a href="#">Tematicas del Info<img src="{% static 'img/nav_bullet.jpg' %}" alt="" /></a>
+        <li> <a href="#">Noticias del Info<img src="{% static 'img/nav_bullet.jpg' %}" alt="" /></a>
           <ul>
             <li><a href="{% url 'noticias:path_filtrar_noticias' 1 %}">Etapa 1</a></li>
             <li><a href="{% url 'noticias:path_filtrar_noticias' 2 %}">Etapa 2</a></li>
@@ -70,9 +70,9 @@
             <li><a href="{% url 'noticias:path_filtrar_noticias' 4 %}">Eventos &amp; Más</a></li>
           </ul>
         </li>      
-        <li><a href="{% url 'informatorio:path_para_profes' %}">Para Profes</a></li>
-        <li><a href="{% url 'informatorio:path_para_estudiantes' %}">Para Estudiantes</a></li>
-        <li><a href="#">Contactanos</a></li>
+        <li><a href="{% url 'informatorio:path_para_profes' %}">Profes</a></li>
+        <li><a href="{% url 'informatorio:path_para_estudiantes' %}">Estudiantes</a></li>
+        <li><a href="{% url 'contactos:path_contactos' %}">Contactanos</a></li>
         <li class="sep">&nbsp;</li>
         <li class="right">&nbsp;</li>
         <div>
@@ -116,8 +116,8 @@
         <a href="https://www.instagram.com/informatorio/?hl=es">Instagram</a> <br>
         <a href="https://www.facebook.com/informatorio.chaco">Facebook</a> <br>
         <a href="https://wa.me/5493624625154">Whatsapp</a> <br>
-        <a href="mailto:informatorio@chaco.gob.ar">Email</a> <br>
-        {% endblock %}
+        <a href="mailto:informatorio@chaco.gob.ar">E-mail</a> <br>
+        {% endblock sidebar %}
       </div>
 
     </div> <!-- cierre wrapper -->
@@ -127,14 +127,14 @@
       <div class="foot_l"><a href="#">&nbsp;</a></div>
       <div class="foot_content">
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Parents</a></li>
-          <li><a href="#">Teachers</a></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><a href="{% url 'path_home' %}">Home</a></li>
+          <li><a href="{% url 'informatorio:path_nuestra_institucion' %}">Sobre el Info</a></li>
+          <li><a href="{% url 'informatorio:path_para_profes' %}">Profes </a></li>
+          <li><a href="{% url 'informatorio:path_para_estudiantes' %}">Estudiantes </a></li>
+          <li><a href="{% url 'contactos:path_contactos' %}">Contactanos</a></li>
         </ul>
         <br>
-        <p>All contents &copy; YourName. All rights reserved.</p>
+        <p>Todo el contenido &copy; Desarrollo de estudiantes.</p>
       </div>
       <div class="foot_r">&nbsp;</div>
       <div class="backToTop"><a class="backToTop" href="#">&nbsp;</a></div>
