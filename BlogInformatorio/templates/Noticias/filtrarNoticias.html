@@ -12,6 +12,8 @@
                 {% endif %}
 
                 <h2>{{ noticia.nombre }}</h2>
+                <p>{{ noticia.descripcion|truncatewords:30 }}</p>
+
                 <p><strong>GÉNERO: </strong>{{ noticia.genero.nombre }}</p>
                 <p><strong>Fecha de Publicación: </strong>{{ noticia.creado|date:"d/m/Y H:i" }}</p>
 
