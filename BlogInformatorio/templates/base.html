@@ -112,11 +112,11 @@
             <a href="{% url 'noticias:path_filtrar_noticias' 4 %}">Eventos del Info</a> <br>
           </li>
         </ul>
-        <h2>Contactanos</h2>
-        <a href="https://www.instagram.com/informatorio/?hl=es">Instagram</a> <br>
-        <a href="https://www.facebook.com/informatorio.chaco">Facebook</a> <br>
-        <a href="https://wa.me/5493624625154">Whatsapp</a> <br>
-        <a href="mailto:informatorio@chaco.gob.ar">E-mail</a> <br>
+        <h2>Sobre el Info</h2>
+        <a href="{% url 'informatorio:path_nuestra_institucion' %}">Nuestra Institución</a><br>
+        <a href="{% url 'informatorio:path_donde_estamos' %}">Donde estamos</a><br>
+        <a href="{% url 'informatorio:path_integrantes' %}">Integrantes</a> <br>
+        
         {% endblock sidebar %}
       </div>
 
