@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 	
     <h1>Profes y Mentores Destacados</h1> 
     
     <div class="biografia">
-        <img src="#" alt="Foto del profesor">
+        <img src="{% static 'img/profesor1.png' %}" alt="Foto del profesor">
         <h2>Jose Peréz</h2>
         <p>Jose Peréz, nacio en Las Breñas y es nuestro docente en la etapa 1 en el Informatorio, se dedica a enseñar estilos en css. Ademas es docente en la (UTN) Universidad Tecnologica Nacional en la ciudad de Resistencia.</p>
         <p>Es parte del Informatorio desde el año 2021, fue seleccionado por su trayectoria de más de 7 años como Full Stack Developer, sus 5 años de docencia y manejo de grupos, ademas fue reconocido por el Polo IT de la provincia por el desarrollo y funcion de su aplicacion "ResisMaps" la cual brinda un mapa exacto de la ciudad de Resistencia, donde muestra en tiempo real cuales calles estan con mucho trafico, anegadas o intransitables.</p>
     </div>
     
     <div class="biografia">
-        <img src="#" alt="Foto del Mentor">
+        <img src="{% static 'img/mentora1.png' %}" alt="Foto del Mentor">
         <h2>Sofia Cabrera</h2>
         <p>Sofia Cabrera, nacio en Puerto Tirol comenzo a trabajar con nosotros de manera voluntaria en el rol de  mentora, es una apacionada de la docencia y la informatica. Profesiones que lo hace con mucha dedicación y profesionalismo.</p>
         <p>Se nos unio el año 2020 si en plena pandemia y hasta el dia de hoy continua con nosotros, donde primeramente estuvo como participante de la comision 3 y al culminar su etapa de estudiantes se ofrecio a ejercer sus conocimientos y experencia para ayudar a los participantes en que puedan explotar sus habilidades sin tener el temor al no poder reparar errores comunes y complejos en el codigo.</p>

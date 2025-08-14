@@ -476,3 +476,68 @@ img.aligncenter {
   background-color: #6cb52e;
 }
 
+.biografia {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.biografia img {
+  width: 165px;
+  height: 165px;
+  object-fit: cover;
+  border-radius: 10%;
+  margin-bottom: 10px;
+}
+
+.biografia h2 {
+  margin: 10px 0 5px;
+  font-size: 1.5rem;
+}
+
+.biografia p {
+  color: #555;
+}
+
+.contacto-redes {
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.contacto-redes h3 {
+  margin-bottom: 15px;
+}
+
+.contacto-redes a {
+  display: inline-block;
+  padding: 8px 15px;
+  margin: 0 10px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-instagram {
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+}
+
+.btn-facebook {
+  background-color: #1877f2;
+}
+
+.btn-whatsapp {
+  background-color: #25d366;
+}
+
+.contacto-redes a:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
