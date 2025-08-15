@@ -293,31 +293,33 @@ img.aligncenter {
   color: #333;
 }
 
-/***** Search Box *****/
 #header #searchform {
-  position: absolute;
+  position: relative; /* ya no absolute */
   z-index: 2;
-  left: 600px;
-  top: 0px;
+  margin-left: auto;  /* empuja hacia la derecha */
+  margin-top: 10px;   /* separa un poco de la parte superior */
   width: 205px;
+  display: flex;      /* para que campo y botón queden alineados */
+  justify-content: flex-end;
 }
 
 #header #searchform .searchField {
-  border: none;
-  background: transparent;
+  border: 1px solid #ccc;
+  background: #fff;
   width: 158px;
-  height: 23px;
-  line-height: 23px;
-  position: relative;
-  top: 1px;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 5px;
+  border-radius: 4px;
 }
 
 #header #searchform .searchSubmit {
-  background: transparent url("../img/searchButton.jpg") no-repeat 0 0; /*Modificado url*/
+  background: transparent url("../img/searchButton.jpg") no-repeat 0 0;
   width: 40px;
   height: 26px;
   border: none;
   cursor: pointer;
+  margin-left: 4px; /* espacio entre campo y botón */
 }
 
 /***** CONTENT *****/
@@ -541,3 +543,4 @@ img.aligncenter {
   transform: scale(1.05);
   opacity: 0.9;
 }
+

@@ -5,12 +5,13 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.utils.decorators import method_decorator
+from django.db.models import Q
 
 from .models import Noticia, Genero
 from .forms import FormularioCrearNoticia, FormularioModificarNoticia
 
 
-@method_decorator([staff_member_required,], name='dispatch')
+@method_decorator([staff_member_required], name='dispatch')
 def Listar_Noticias(request):
     valor_a_ordenar = request.GET.get('orden', None)
 
@@ -41,6 +42,17 @@ def Filtrar_Noticias(request, pk):
     })
 
 
+def buscar_noticias(request):
+    query = request.GET.get('q', '').strip()  # texto que escribe el usuario
+
+    resultados = Noticia.objects.filter(
+        Q(nombre__icontains=query) | Q(genero__nombre__icontains=query)
+    ).distinct()
+
+    return render(request, 'noticias/buscar.html', {
+        'resultados': resultados,
+        'query': query
+    })
 
 class DetalleNoticia(DetailView):
     model = Noticia
