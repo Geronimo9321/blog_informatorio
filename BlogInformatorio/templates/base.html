@@ -76,11 +76,11 @@
         <li class="sep">&nbsp;</li>
         <li class="right">&nbsp;</li>
         <div>
-          <form method="get" id="searchform" action="#">
+          <!-- Buscador apuntando a la nueva vista -->
+          <form method="get" id="searchform" action="{% url 'noticias:buscar_noticias' %}">
             <div>
               <input class="searchField" type="text" name="q" placeholder="buscar..." />
               <input class="searchSubmit" type="submit" value="" />
-              <input type="hidden" name="sitesearch" value="" />
             </div>
           </form>
         </div>
