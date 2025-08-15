@@ -178,7 +178,7 @@ img.aligncenter {
 #top {
   height: 90px;
   padding: 0 25px;
-  background: #0099cc ; /* header en lugar de logo */
+  background-color: #333 ; /* header en lugar de logo */
 }
 
 #top .logo {
